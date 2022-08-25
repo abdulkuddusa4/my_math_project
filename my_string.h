@@ -14,7 +14,17 @@ MyString re_init(MyString, int);
 MyString read_number(char *);
 void print_number(MyString);
 MyString my_append(MyString, char);
+void print_op_code_msg();
 
+void print_op_code_msg() {
+  printf("op-code: 1 for addition\n");
+  printf("op-code: 2 for substraction\n");
+  printf("op-code: 3 for multipication\n");
+  printf("op-code: 4 for divition\n");
+  printf("Please chose an op-code: ");
+}
+
+// CREATES A COPY OF THE GIVEN MyString OBJECT.
 MyString copy(MyString st) {
   MyString num;
   num = my_string_init(num, 0);
@@ -64,6 +74,8 @@ MyString read_number(char *msg) {
   my_string_init(st, 0);
   char ch;
   int index = 0;
+  // first clear the stdin
+  fflush(stdin);
   ch = getchar();
   st.len = 0;
   st.number = (char *)malloc(sizeof(char));
@@ -93,4 +105,9 @@ MyString create_sub_string(MyString st, int s, int e) {
   return tmp1;
 }
 
+void clear_stdin() {
+  char *s;
+
+  fscanf(stdin, "%s", s);
+}
 #endif
